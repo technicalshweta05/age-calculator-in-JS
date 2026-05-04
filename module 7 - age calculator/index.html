@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+</head>
+<body>
+    <input type="date" name="" id="userDate">
+    <input type="time" name="" id="userTime"><br>
+    <button onclick="calAge()">Calc age</button><br>
+
+    <label>Years:</label>
+    <input type="text" name="" id="years"><br>
+    <label>Months:</label>
+    <input type="text" name="" id="months"><br>
+    <label>Days:</label>
+    <input type="text" name="" id="days"><br>
+    <label>Hours:</label>
+    <input type="text" name="" id="hours"><br>
+    <label>Minutes:</label>
+    <input type="text" name="" id="minutes"><br>
+    <label>Seconds:</label>
+    <input type="text" name="" id="seconds"><br>
+</body>
+
+<script>
+    function calAge(){
+        let userDate=document.getElementById('userDate').value;
+        let userTime=document.getElementById('userTime').value;
+        let years=document.getElementById('years')
+        let months=document.getElementById('months')
+        let days=document.getElementById('days')
+        let hoursUser=document.getElementById('hours')
+        let minutesUser=document.getElementById('minutes')
+        let secondsUser=document.getElementById('seconds')
+
+        let currentTime=new Date();
+        let userTimeZone=new Date(userDate + " " + userTime)
+
+        let timeDifference= currentTime - userTimeZone
+        let year =Math.floor(timeDifference/(1000*60*60*24*365.25))
+        let month=Math.floor((timeDifference % (1000*60*60*24*365.25))/(1000*60*60*24*30))
+        let day=Math.floor((timeDifference % (1000*60*60*24*30))/ (1000*60*60*24))
+        let hour=Math.floor((timeDifference % (1000*60*60*24)) /(1000*60*60))
+        let minute=Math.floor((timeDifference % (1000*60*60)) /(1000*60))
+        let second=Math.floor((timeDifference % (1000*60)) /(1000))
+
+
+        years.value=year;
+        months.value=month;
+        days.value=day;
+        hoursUser.value=hour;
+        minutesUser.value=minute;
+        secondsUser.value=second;
+
+
+
+        
+    }
+</script>
+</html>
